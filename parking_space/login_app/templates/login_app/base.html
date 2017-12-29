@@ -1,10 +1,18 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'login_app/styles/base.css'%}" />
+<div class="header">
 {% if user.is_authenticated %}
 
 
-    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
-    <button type="button" onclick="location.href = '/logout' " >logout</button>
-{% else %}
+
+    <div class="user_info">
+
+        <h1>Parking space info</h1>
+        <p>Welcome, {{ user.get_username }}</p>
+        <button id = "logout_button" type="button" onclick="location.href = '/logout' " >logout</button>
+
+            {% else %}
     <p>Welcome, new user. Please log in.</p>
 {% endif %}
+    </div>
+</div>
