@@ -4,7 +4,7 @@
 
 
     <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
-    <button type="button" onclick="location.href = 'logout' " >logout</button>
+    <button type="button" onclick="location.href = '/logout' " >logout</button>
 {% else %}
     <p>Welcome, new user. Please log in.</p>
 {% endif %}
