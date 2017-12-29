@@ -1,0 +1,27 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'login_app/styles/main.css'%}" />
+<script type="application/javascript" src="{% static 'login_app/js/main.js'%}"> </script>
+
+
+<h2>Login Form</h2>
+
+<form method="post">
+  <div class="imgcontainer">
+    <img src="{% static 'login_app/images/img_avatar2.png' %}" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+
+
+  </div>
+
+  <div class="container">
+     <button type="button" onclick="location.href = 'signup' " >SignUp</button>
+     <input type="checkbox" checked="checked"> Remember me
+    <button type="button" class="cancelbtn" onclick="cancel_entry()">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>

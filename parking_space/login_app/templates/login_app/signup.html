@@ -1,0 +1,32 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'login_app/styles/signupstyle.css'%}" />
+
+
+{% block content %}
+  <h2>Sign up</h2>
+    <div class="imgcontainer">
+    <img src="{% static 'login_app/images/img_avatar2.png' %}" alt="Avatar" class="avatar">
+    </div>
+  <form method="post">
+      <div class="container">
+            {% csrf_token %}
+            {% for field in form %}
+            <label>
+            {{ field.label_tag }}<br>
+                {{ field }} <br>
+            {% if field.help_text %}
+                <small style="display: none">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+                <label style="color: red">{{ error }}</label>
+            {% endfor %}
+            </label>
+      {% endfor %}
+            <div class="clearfix">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="submit" class = "signupbtn">Sign up</button>
+
+            </div>
+      </div>
+  </form>
+{% endblock %}
