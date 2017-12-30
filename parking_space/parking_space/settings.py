@@ -8,6 +8,7 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
+author = Harish
 """
 
 import os
@@ -125,8 +126,8 @@ STATIC_URL = '/static/'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'hrharish111@gmail.com'
+EMAIL_HOST_USER = '**************'
 EMAIL_HOST_PASSWORD = '*********'
 EMAIL_PORT = 587
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'slot_viewer'
