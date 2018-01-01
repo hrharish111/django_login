@@ -1,5 +1,6 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'login_app/styles/base.css'%}" />
+<body>
 <div class="header">
 {% if user.is_authenticated %}
 
@@ -16,3 +17,12 @@
 {% endif %}
     </div>
 </div>
+
+{% block content %}
+{% endblock %}
+
+<div class="footer">
+    <p>&copy; 2018 Built and designed by Harish</p>
+</div>
+
+</body>

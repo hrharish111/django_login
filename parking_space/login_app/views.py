@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 from django.template import loader
-from .forms import SignupForm
+from .forms import SignupForm,ViewSlot
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes,force_text
@@ -12,9 +12,11 @@ from django.utils.http import  urlsafe_base64_decode,urlsafe_base64_encode
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth.models import User
-from django.contrib.auth import login,authenticate
+from django.contrib.auth import login
 from django.contrib.auth.views import login
-
+from .models import NewSpace,NewSlot
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request,"login_app/base.html")
 
@@ -65,3 +67,16 @@ def loginuser(request):
         return  HttpResponse("already_loged in")
     else:
         return login(request)
+
+@login_required(login_url = '/')
+def slot_viewer(request):
+    if request.method == "POST":
+        form =ViewSlot(request.POST)
+        if form.is_valid():
+            form_cleandata = request.POST.get('slot_name')
+            data_response = get_object_or_404(NewSpace,pk =form_cleandata)
+
+            return render(request,'login_app/slot_viewer.html',{'form':form,'data_response': data_response})
+    else:
+        form =ViewSlot()
+    return render(request,"login_app/slot_viewer.html",{"form":form})

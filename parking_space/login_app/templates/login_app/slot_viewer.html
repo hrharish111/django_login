@@ -1,0 +1,35 @@
+{% extends 'login_app/base.html' %}
+{% block content %}
+<form method="post">
+{% csrf_token %}
+    <div class = "resizeclass">
+    <span>{{ form.as_p }} </span>
+        <button id = "search_submit" type="submit">Submit</button>
+        </div>
+
+</form>
+
+<table class="table_design">
+    <tr>
+        <th>Slot Name</th>
+        <th>Location details</th>
+        <th>Charges</th>
+    </tr>
+    <tr>
+        <td>{{ data_response.slot_name }}</td>
+        <td>{{ data_response.location_details }}</td>
+        <td>{{ data_response.charges}}</td>
+    </tr>
+    </table>
+
+<h2 id="style_h2o">Find the Avaliable Slot </h2>
+<div style="width: 50%; margin-left:auto;margin-right: auto;">
+{% for i in data_response.newslot_set.all %}
+
+<div class="numberCircle_{{i.slot_status}}" >{{i.slot_position}}</div>
+
+{% endfor %}
+</div>
+    {% endblock %}
+
+
